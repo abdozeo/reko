@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Phroh Face-Folio: Empowering Education through AI Facial Recognition. Seamlessly integrate cutting-edge technology into the educational experience. Recognize faces, enhance connections, and transform futures. AI-Powered Precision, User-Friendly Interface, Customizable Solutions. Join us for a transformative journey. Try our services today!" name="description">
+  <meta content="" name="keywords">
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='16.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='apple-touch-icon.png') }}" rel="apple-touch-icon">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='bootstrap-icons.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ url_for('static', filename='main-t.css') }}" rel="stylesheet">
+  <!-- Custom Luxury CSS -->
+  <link href="{{ url_for('static', filename='luxury.css') }}" rel="stylesheet">
+  <!-- PWA -->
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="manifest" href="/static/manifest.json">
+  <title>Face AI System</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-center">
+      <a href="/" class="logo d-flex align-items-center justify-content-center">
+        <h1 id="logos"><span>_</span>Face AI System<span>_</span></h1>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main">
+    <section id="call-to-action" class="call-to-action">
+      <div class="container">
+        <div class="row">
+          <!-- Webcam Section -->
+          <div class="col-lg-8 d-flex justify-content-center align-items-center">
+            <div class="webcam-section">
+              <div id="webcamContainer"></div>
+              <canvas id="webcamCanvas" width="640" height="480"></canvas>
+              <div id="result"></div>
+              <div id="recognizedName"></div>
+            </div>
+          </div>
+          <!-- Controls Section -->
+          <div class="col-lg-4">
+            <div class="controls-section">
+              <div class="sec1 mb-3">
+                <button class="luxury-btn" onclick="toggleWebcam()" title="Start the webcam"><i class="bi bi-camera"></i> Start</button>
+                <button class="luxury-btn" onclick="refreshPage()" title="Recognize face again"><i class="bi bi-arrow-repeat"></i> Recognize Again</button>
+              </div>
+              <div class="sec2 mb-3">
+                <button class="luxury-btn" onclick="updateBonus();" title="Add bonus points"><i class="bi bi-plus-circle"></i> Bonus</button>
+                <button class="luxury-btn" onclick="updateMinus();" title="Deduct points"><i class="bi bi-dash-circle"></i> Minus</button>
+                <button class="luxury-btn" onclick="updateAlert();" title="Send an alert"><i class="bi bi-exclamation-triangle"></i> Alert</button>
+              </div>
+              <div class="sec3 mb-3">
+                <input type="text" id="comment" class="inbyte" placeholder="Enter your comment">
+                <button class="luxury-btn" onclick="addComment();" title="Add a comment"><i class="bi bi-chat-left-text"></i> Add Comment</button>
+              </div>
+              <div class="excel mb-3">
+                <button class="luxury-btn" data-bs-toggle="modal" data-bs-target="#excelModal" title="View Excel data"onclick="fetchExcel()"><i class="bi bi-file-earmark-excel"></i> Open Excel</button>
+                <button class="luxury-btn" onclick="downloadOriginalExcel()" title="Download Excel file"><i class="bi bi-download"></i> Download Excel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Excel Modal -->
+    <div class="modal fade" id="excelModal" tabindex="-1" aria-labelledby="excelModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="excelModalLabel">Excel Data</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="excel-table"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        © Copyright <strong><span>Face AI System</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top Button -->
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='xlsx.full.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='face-api.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='socs.js') }}" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/static/sw.js')
+        .then(function(registration) {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(function(error) {
+          console.error('Service Worker registration failed:', error);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var excelModal = document.getElementById('excelModal');
+      excelModal.addEventListener('shown.bs.modal', function () {
+        fetchExcel();
+      });
+    });
+
+  </script>
+</body>
+
+</html>

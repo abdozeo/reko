@@ -1,0 +1,150 @@
+/* General Styles */
+body {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  font-family: 'Raleway', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Header */
+.header {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #d4af37;
+}
+
+.logo h1 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  color: #f0f0f0;
+}
+
+.logo h1 span {
+  color: #d4af37;
+}
+
+.logo:hover h1 {
+  color: #d4af37;
+  transition: color 0.3s ease;
+}
+
+/* Webcam Section */
+.webcam-section {
+  padding: 20px;
+}
+
+#webcamContainer {
+  border: 2px solid #d4af37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#result, #recognizedName {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 10px;
+  font-family: 'Arial', serif;
+}
+#result p{  color: #fff !important;}
+
+/* Controls Section */
+.controls-section {
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.luxury-btn {
+  background-color: transparent;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  margin: 5px;
+}
+
+.luxury-btn:hover {
+  background-color: #d4af37;
+  color: #1a1a1a;
+}
+
+.luxury-btn i {
+  margin-right: 5px;
+}
+
+.inbyte {
+  background-color: #3a3a3a;
+  border: 1px solid #d4af37;
+  color: #f0f0f0;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.inbyte::placeholder {
+  color: #a0a0a0;
+}
+
+/* Modal */
+.modal-content {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+}
+
+.modal-header, .modal-footer {
+  border-color: #d4af37;
+}
+
+.modal-title {
+  font-family: 'Playfair Display', serif;
+}
+
+.btn-close {
+  filter: invert(1);
+}
+
+.btn-secondary {
+  background-color: #d4af37;
+  border: none;
+  color: #1a1a1a;
+}
+
+.btn-secondary:hover {
+  background-color: #b8962e;
+}
+
+/* Footer */
+.footer {
+  background-color: #1a1a1a;
+  border-top: 1px solid #d4af37;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.footer .copyright span {
+  color: #d4af37;
+}
+
+/* Scroll Top */
+.scroll-top {
+  background-color: #d4af37;
+  color: #1a1a1a;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.scroll-top:hover {
+  background-color: #b8962e;
+}
+
+.row, .call-to-action .container{background-color: darkslategray !important;}
+
